@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/weather"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/login_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/cityName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/enter_city_name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold|normal"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/weatherBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="3dp"
+            android:background="@drawable/login_background"
+            android:backgroundTint="#2d9bfa"
+            android:onClick="onClickWeatherBtn"
+            android:src="@drawable/ic_search"
+            tools:ignore="OnClick,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/address"
+                android:textSize="24sp"
+                android:text="@string/app_name"
+                android:textStyle="bold|normal"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/updatedAt"
+                android:textSize="14sp"
+                android:text="13 March 2022, 17:00"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/status"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textStyle="bold|normal"
+                android:textColor="@color/sky_dark"
+                android:text="Clear sky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/temps"
+                android:textSize="60sp"
+                android:gravity="center"
+                android:textColor="@color/yellow"
+                android:text="15 C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/temp_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/temp_bg"
+                    android:padding="10dp"
+                    android:textStyle="bold|normal"
+                    android:text="Min temp: 05:05 AM"
+                    android:textColor="@color/white"
+                    tools:ignore="TextContrastCheck" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/temp_max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/temp_bg"
+                    android:padding="10dp"
+                    android:textStyle="bold|normal"
+                    android:text="Max temp: 05:05 PM"
+                    android:textColor="@color/white"
+                    tools:ignore="TextContrastCheck" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="65dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/today_info"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold|normal" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tempInfoRecycler"
+                tools:listitem="@layout/weather_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/errorText"
+        android:visibility="gone"
+        android:text="@string/wrong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+</LinearLayout>
